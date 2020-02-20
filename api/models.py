@@ -15,10 +15,23 @@ class Category(models.Model):
     slug = models.SlugField(_('Category slug'), unique=True)
     parent_id = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
 
+    class Meta:
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
+
+    def __str__(self):
+        return self.name
+
 
 class Tag(models.Model):
     name = models.CharField(_('Name'), max_length=30)
     slug = models.SlugField(_('Tag slug'), unique=True)
+
+    def __str__(self):
+        return self.name
+
+    # def get_absolute_url(self):
+    #     return self.slug
 
 
 class Post(models.Model):
@@ -35,13 +48,19 @@ class Post(models.Model):
     updated = models.DateTimeField(_('Date of creation'), default=datetime.now)
     published = models.DateTimeField(_('Date of publication'), default=datetime.now)
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, verbose_name=_('related post'), on_delete=models.CASCADE, )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    body = models.TextField(_('Message:'))
+    body = models.TextField(_('Message:'), max_length=5000)
     created = models.DateTimeField(_('comment created'), default=datetime.now)
     updated = models.DateTimeField(_('comment updated'), default=datetime.now)
     is_approved = models.BooleanField(_('Approved'), default=False)
     like = models.IntegerField(_('Likes'), default=0)
     dislike = models.IntegerField(_('Dislikes'), default=0)
+
+    def __str__(self):
+        return self.id

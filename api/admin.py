@@ -8,7 +8,7 @@ from .models import UserProfile, Post, Category, Tag, Comment
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {
-        'slug': ('name',),
+        'slug': ('name',)
     }
     list_display = ('name', 'slug', 'parent_id')
 

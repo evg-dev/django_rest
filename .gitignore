@@ -1,2 +1,4 @@
 /db.sqlite3
 /static/
+/frontend/node_modules/
+/frontend/static/frontend/

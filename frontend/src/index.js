@@ -1,4 +1,5 @@
 // Entry point
+import 'babel-polyfill'
 import React, {Component} from "react";
 import {render} from "react-dom";
 import {createStore, applyMiddleware} from 'redux';

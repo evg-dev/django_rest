@@ -1,22 +1,28 @@
 import React, {Component} from "react";
-import {BrowserRouter, Route, Switch, withRouter} from "react-router-dom";
+import {BrowserRouter, Route, NavLink, Switch, withRouter} from "react-router-dom";
+import About from "../About/About";
 
 class NavBar extends Component {
 
     render() {
         return (
-            <header>
-                <h1>Test NavBar</h1>
+            <nav>
                 <ul>
-                    {this.state.data.map(category => {
-                        return (
-                            <li class="category">
-                                <a href={category.slug}>{category.name}</a>
-                            </li>
-                        );
-                    })}
+                    <li>
+                        <NavLink to='/'>Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/category/'>Categories</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/tag/'>Tags</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/about/'>About</NavLink>
+                        <Route path='/about/' component={About}/>
+                    </li>
                 </ul>
-            </header>
+            </nav>
         );
     }
 }

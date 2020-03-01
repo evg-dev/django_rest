@@ -2,3 +2,4 @@
 /static/
 /frontend/node_modules/
 /frontend/static/frontend/
+/reload.bash

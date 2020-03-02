@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.urls import include, path
 from .views import MainPageViews
 
@@ -7,5 +8,6 @@ urlpatterns = [
     path('about/', MainPageViews.as_view()),
     path('category/', MainPageViews.as_view()),
     path('tags/', MainPageViews.as_view()),
-    path('', MainPageViews.as_view())
+    path('', MainPageViews.as_view()),
+    path('<slug>/', MainPageViews.as_view()),
 ]

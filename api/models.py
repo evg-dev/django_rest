@@ -36,7 +36,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(_('Title'), max_length=30)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name=_('profile'))
     category = models.ForeignKey(Category, related_name=_('entries'), on_delete=models.PROTECT, blank=False)
     tag = models.ManyToManyField(Tag, related_name=_('metategs'), blank=True)
     slug = models.SlugField(_('Post slug'), unique=True)

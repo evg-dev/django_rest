@@ -1,10 +1,11 @@
 import React, {Component} from "react";
+import CategoryList from "../../components/CategoryList/CategoryList";
 
 class Category extends Component {
 
     render() {
         return (
-            <div>Categories</div>
+            <CategoryList/>
         );
     }
 }

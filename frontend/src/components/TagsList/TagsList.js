@@ -21,7 +21,7 @@ class TagsList extends Component {
         return (
             <ul className="content-list">
                 {this.state.tags.map((tag) => (
-                    <div className="tag-list" key={tag._id}>
+                    <div className="tag-list" key={tag.id}>
                         <a href={tag.slug}>{tag.name}</a>
                     </div>
                 ))}

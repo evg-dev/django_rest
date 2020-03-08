@@ -15,13 +15,13 @@ from .models import UserProfile, Category, Tag, Comment, Post
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
-        fields = ['name', 'slug', 'parent_id']
+        fields = ['id', 'name', 'slug', 'parent_id']
 
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tag
-        fields = ['name', 'slug']
+        fields = ['id', 'name', 'slug']
 
 
 #  For add Author field need add UserProfileSerializer, see above
@@ -29,7 +29,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['title', 'tease', 'body', 'created', 'category', 'tag', 'slug']
+        fields = ['id', 'title', 'tease', 'body', 'created', 'category',  'slug', 'tag']
         lookup_field = 'slug'
         extra_kwargs = {
             'url': {'lookup_field': 'slug'}

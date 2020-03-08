@@ -21,7 +21,7 @@ class CategoryList extends Component {
         return (
             <ul className="content-list">
                 {this.state.categories.map((category) => (
-                    <div className="tag-list" key={category._id}>
+                    <div className="tag-list" key={category.id}>
                         <a href={category.slug}>{category.name}</a>
                     </div>
                 ))}

@@ -4,7 +4,7 @@ import NavBar from "./../../containers/NavBar/NavBar";
 import Footer from "./../../containers/Footer/Footer";
 import Posts from "../Posts/Posts";
 import Tags from "../Tags/Tags";
-import Category from "./../../containers/Category/Category";
+import Categories from "../Categories/Categories";
 import About from "../About/About";
 import Post from "../Posts/Post/Post";
 import getSlug from "../../components/PostList/PostView/PostView";
@@ -35,7 +35,7 @@ class Base extends Component {
                 <NavBar/>
                 <Switch>
                     <Route exact path="/" component={Posts}/>
-                    <Route path="/category/" component={Category}/>
+                    <Route path="/category/" component={Categories}/>
                     <Route path="/tags/" component={Tags}/>
                     <Route path="/about/" component={About}/>
                     <Route exact path="/:slug" component={getPostSlug} />

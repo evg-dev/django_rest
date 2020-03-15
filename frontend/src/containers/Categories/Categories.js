@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import CategoryList from "../../components/CategoryList/CategoryList";
 
-class Category extends Component {
+class Categories extends Component {
 
     render() {
         return (
@@ -10,4 +10,4 @@ class Category extends Component {
     }
 }
 
-export default Category;
+export default Categories;

@@ -26,10 +26,12 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
 
 #  For add Author field need add UserProfileSerializer, see above
 class PostSerializer(serializers.HyperlinkedModelSerializer):
+    category = CategorySerializer()
+    tag = TagSerializer(many=True)
 
     class Meta:
         model = Post
-        fields = ['id', 'title', 'tease', 'body', 'created', 'category',  'slug', 'tag']
+        fields = ['id', 'title', 'tease', 'body', 'created', 'category', 'slug', 'tag']
         lookup_field = 'slug'
         extra_kwargs = {
             'url': {'lookup_field': 'slug'}

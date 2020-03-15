@@ -10,4 +10,5 @@ urlpatterns = [
     path('tags/', MainPageViews.as_view()),
     path('', MainPageViews.as_view()),
     path('<slug>/', MainPageViews.as_view()),
+    path('category/<slug>/', MainPageViews.as_view()),
 ]

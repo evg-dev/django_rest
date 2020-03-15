@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
-class PostList extends Component {
-
+class CategoryView extends Component {
     state = {
-        posts: []
+        post: []
     };
 
-    async loadPosts() {
+    async loadCategory() {
         this.setState({
             posts: await fetch("/api/v0/post/").then(response => response.json())
         });
@@ -24,9 +23,9 @@ class PostList extends Component {
                 {this.state.posts.map((post) => (
                     <div className="post-list" key={post.id}>
                         <Link //maintainScrollPosition={false} //console alarm
-                              to={{
-                            pathname: `/${post.slug}`,
-                        }}>
+                            to={{
+                                pathname: `/${post.slug}`,
+                            }}>
                             {post.title}
                         </Link>
                     </div>
@@ -36,4 +35,4 @@ class PostList extends Component {
     }
 }
 
-export default PostList;
+export default CategoryView;

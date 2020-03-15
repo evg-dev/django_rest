@@ -9,24 +9,9 @@ import About from "../About/About";
 import Post from "../Posts/Post/Post";
 import getSlug from "../../components/PostList/PostView/PostView";
 import PostList from "../../components/PostList/PostList";
-import getPostSlug from "../Posts/Post/getPostSlug";
-
-// function getPostSlug() {
-//     let {slug} = useParams();
-//     return (
-//             <div>Slug : {slug}</div>
-//         );
-// }
-// const Post = () => {
-//     let { slug } = useParams();
-//     return (
-//         <div>
-//             Portfolio component
-//             <p>Topic: {slug}</p>
-//         </div>
-//     );
-// };
-
+import post from "../Posts/Post/Post";
+import Category from "../Categories/Category/Category";
+import Tag from "../Tags/Tag/Tag";
 
 class Base extends Component {
     render() {
@@ -34,11 +19,13 @@ class Base extends Component {
             <div>
                 <NavBar/>
                 <Switch>
-                    <Route exact path="/" component={Posts}/>
-                    <Route path="/category/" component={Categories}/>
-                    <Route path="/tags/" component={Tags}/>
+                    <Route exact path="/tag/:tag__slug" component={Tag}/>
+                    <Route path="/tag/" component={Tags}/>
                     <Route path="/about/" component={About}/>
-                    <Route exact path="/:slug" component={getPostSlug} />
+                    <Route exact path="/category/:category__slug" component={Category}/>
+                    <Route path="/category/" component={Categories}/>
+                    <Route exact path="/" component={Posts}/>
+                    <Route exact path="/:post__slug" component={Post}/>
                 </Switch>
             </div>
         );

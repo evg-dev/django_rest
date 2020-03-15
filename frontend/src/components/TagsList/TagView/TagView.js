@@ -1,20 +1,20 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
-class CategoryView extends Component {
+class TagView extends Component {
     state = {
         posts: []
     };
 
-    async loadPostsByCategory() {
+    async loadPostsByTag() {
         this.setState({
-            posts: await fetch(`/api/v0/category/${this.props.category__slug}/`)
+            posts: await fetch(`/api/v0/tag/${this.props.tag__slug}/`)
                 .then(response => response.json())
         });
     }
 
     componentDidMount() {
-        this.loadPostsByCategory();
+        this.loadPostsByTag();
     }
 
     render() {
@@ -36,4 +36,4 @@ class CategoryView extends Component {
     }
 }
 
-export default CategoryView;
+export default TagView;

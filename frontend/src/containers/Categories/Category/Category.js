@@ -1,13 +1,12 @@
-import React, {Component} from "react";
-import CategoryView from "../../../components/CategoryList/CategoryView";
+import React from "react";
+import {useParams} from "react-router-dom";
+import CategoryView from "../../../components/CategoryList/CategoryView/CategoryView";
 
-class Categories extends Component {
-
-    render() {
-        return (
-            <CategoryList/>
-        );
-    }
+function Category() {
+    let {category__slug} = useParams();
+    return (
+        <CategoryView category__slug={category__slug}/>
+    );
 }
 
-export default Categories;
+export default Category;

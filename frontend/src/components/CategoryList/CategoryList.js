@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
 class CategoryList extends Component {
 
@@ -22,7 +23,10 @@ class CategoryList extends Component {
             <ul className="content-list">
                 {this.state.categories.map((category) => (
                     <div className="tag-list" key={category.id}>
-                        <a href={category.slug}>{category.name}</a>
+                        <Link to={{pathname: `/category/${category.slug}`}}>
+                            {category.name}
+                        </Link>
+                        {/*<a href={category.slug}>{category.name}</a>*/}
                     </div>
                 ))}
             </ul>

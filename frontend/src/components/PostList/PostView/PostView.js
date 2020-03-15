@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Link, Route, useParams} from "react-router-dom";
 import ReactDOM from "react-dom";
-import Post from "../../../containers/Posts/Post/Post";
-import getPostSlug from "../../../containers/Posts/Post/getPostSlug";
+import post from "../../../containers/Posts/Post/Post";
 
 class PostView extends Component {
 
@@ -18,7 +17,7 @@ class PostView extends Component {
         tag: []
     };
     async loadPost() {
-        fetch(`/api/v0/post/${this.props.post_slug}/`)
+        fetch(`/api/v0/post/${this.props.post__slug}/`)
             .then(response => response.json())
             .then(data => {
                 this.setState(data)

@@ -1,14 +1,13 @@
-// import React, {Component} from "react";
-// import PostView from "../../../components/PostList/PostView/PostView";
-// import {useParams} from "react-router-dom";
-// import getPostSlug from "./getPostSlug";
-//
-// class Post extends Component {
-//     render() {
-//         return (
-//             <PostView />
-//         );
-//     }
-// }
-//
-// export default Post;
+import React from "react";
+import {useParams} from "react-router-dom";
+import PostView from "../../../components/PostList/PostView/PostView";
+
+//Hook for class Post GET by slug field
+function Post() {
+    let {post__slug} = useParams();
+    return (
+        <PostView post__slug={post__slug}/>
+    );
+}
+
+export default Post;

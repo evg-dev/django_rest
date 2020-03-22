@@ -1,13 +1,13 @@
 // Entry point
 import 'babel-polyfill'
-import React, {Component} from "react";
+import React from "react";
 import {render} from "react-dom";
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from "react-redux";
-import {Link, BrowserRouter} from "react-router-dom";
-
+import {BrowserRouter} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from "./App";
-
+import './App.css';
 
 const store = createStore(() => [], {}, applyMiddleware());
 

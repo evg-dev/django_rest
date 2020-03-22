@@ -24,11 +24,13 @@ class PostList extends Component {
                 {this.state.posts.map((post) => (
                     <div className="post-list" key={post.id}>
                         <Link //maintainScrollPosition={false} //console alarm
-                              to={{
-                            pathname: `/${post.slug}`,
-                        }}>
+                            to={{
+                                pathname: `/${post.slug}`,
+                            }}>
                             {post.title}
                         </Link>
+                        <p>{post.tease}</p>
+                        <p>{post.create}</p>
                     </div>
                 ))}
             </ul>

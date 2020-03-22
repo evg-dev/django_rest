@@ -30,7 +30,7 @@ class PostList extends Component {
                             {post.title}
                         </Link>
                         <p>{post.tease}</p>
-                        <p>{post.create}</p>
+                        <p>{post.created}</p>
                     </div>
                 ))}
             </ul>

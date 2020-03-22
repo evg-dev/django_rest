@@ -29,16 +29,51 @@ footer {
 
 .dropdown {
 
-  display: inline;
+    display: inline;
 }
 
 .dropdown-menu {
-  text-align: left;
+    text-align: left;
 }
 
 .form-control {
-  width: auto;
+    border-color: #5fad00;
 }
+
+.form-control:focus {
+    border-color: #5fad00;
+    box-shadow: 0 0 0 0.2rem rgb(95, 173, 0);
+}
+
+a {
+    text-decoration: none;
+}
+
+a {
+    color: #5fad00;
+}
+
+a:hover {
+    color: #006919;
+    text-decoration: underline;
+}
+
+.main a:visited {
+    color: #006919;
+}
+
+.main a:hover {
+    color: #006919;
+}
+
+/* With media screen */
+
+@media screen and (min-width: 960px) {
+    .form-control {
+        width: auto;
+    }
+}
+
 
 /*nav ul li {*/
 /*    line-height: 50px;*/

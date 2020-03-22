@@ -22,7 +22,7 @@ class TagsList extends Component {
             <ul className="content-list">
                 {this.state.tags.map((tag) => (
                     <div className="tag-list" key={tag.id}>
-                        <a href={tag.slug}>{tag.name}</a>
+                        <a href={tag.slug}>#{tag.name}</a>
                     </div>
                 ))}
             </ul>

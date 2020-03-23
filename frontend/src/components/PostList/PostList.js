@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import Tags from "../../containers/Tags/Tags";
 
 class PostList extends Component {
 
@@ -20,20 +21,34 @@ class PostList extends Component {
     render() {
         return (
 
-            <ul className="content-list">
+            <div className="content-list">
                 {this.state.posts.map((post) => (
-                    <div className="post-list" key={post.id}>
+                    <div className="post" id={post.id} key={post.id}>
                         <Link //maintainScrollPosition={false} //console alarm
                             to={{
                                 pathname: `/${post.slug}`,
                             }}>
-                            {post.title}
+                            <h2>{post.title}</h2>
                         </Link>
-                        <p>{post.tease}</p>
-                        <p>{post.created}</p>
+                        <div className="post_info">
+                            <Link to={{pathname: `category/${post.category.slug}`}}>
+                                <span className="cat_name">{post.category.name}</span>
+                            </Link>
+                            <span>{post.created}</span>
+                            <ul className="post_tags">
+                                {post.tag.map((t) => (
+                                    <li className="tag" key={t.id}>
+                                        <Link to={{pathname: `tag/${t.slug}`}}>
+                                            #{t.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="tease">{post.tease}</div>
                     </div>
                 ))}
-            </ul>
+            </div>
         );
     }
 }

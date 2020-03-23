@@ -48,6 +48,9 @@ class Post(models.Model):
     updated = models.DateTimeField(_('Date of creation'), default=datetime.now)
     published = models.DateTimeField(_('Date of publication'), default=datetime.now)
 
+    class Meta:
+        ordering = ('-created',)
+
     def __str__(self):
         return self.title
 
@@ -61,6 +64,9 @@ class Comment(models.Model):
     is_approved = models.BooleanField(_('Approved'), default=False)
     like = models.IntegerField(_('Likes'), default=0)
     dislike = models.IntegerField(_('Dislikes'), default=0)
+
+    class Meta:
+        ordering = ('-created',)
 
     def __str__(self):
         return self.id

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import Tags from "../../containers/Tags/Tags";
+import ReactMarkdown from "react-markdown";
 
 class PostList extends Component {
 
@@ -31,21 +32,25 @@ class PostList extends Component {
                             <h2>{post.title}</h2>
                         </Link>
                         <div className="post_info">
-                            <Link to={{pathname: `category/${post.category.slug}`}}>
-                                <span className="cat_name">{post.category.name}</span>
-                            </Link>
+                            <span className="cat_name">Категория:
+                                <Link to={{pathname: `category/${post.category.slug}`}}>
+                                    <span> {post.category.name}</span>
+                                </Link>
+                            </span>
                             <span>{post.created}</span>
-                            <ul className="post_tags">
-                                {post.tag.map((t) => (
-                                    <li className="tag" key={t.id}>
-                                        <Link to={{pathname: `tag/${t.slug}`}}>
-                                            #{t.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="tags_container">
+                                <ul className="post_tags">
+                                    {post.tag.map((t) => (
+                                        <li className="tag" key={t.id}>
+                                            <Link to={{pathname: `tag/${t.slug}`}}>
+                                                #{t.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
-                        <div className="tease">{post.tease}</div>
+                        <ReactMarkdown className="tease" source={post.tease}/>
                     </div>
                 ))}
             </div>

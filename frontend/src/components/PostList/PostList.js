@@ -50,7 +50,7 @@ class PostList extends Component {
                                 </ul>
                             </div>
                         </div>
-                        <ReactMarkdown className="tease" source={post.tease}/>
+                        <ReactMarkdown className="tease" source={post.tease} escapeHtml={false}/>
                     </div>
                 ))}
             </div>

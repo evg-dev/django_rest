@@ -62,8 +62,8 @@ class PostView extends Component {
                             </ul>
                         </div>
                     </div>
-                    <ReactMarkdown className="tease" source={tease}/>
-                    <ReactMarkdown className="body" source={body}/>
+                    <ReactMarkdown className="tease" source={tease} escapeHtml={false}/>
+                    <ReactMarkdown className="body" source={body} escapeHtml={false}/>
                 </div>
                 {/*))}*/}
             </div>

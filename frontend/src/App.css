@@ -1,8 +1,10 @@
 /* Main page */
 
+/*background-color: #f8f9fa!important;*/
+/*    min-width: 400px;*/
+
 #root {
-
-
+    min-width: 640px;
 }
 
 #page-container {
@@ -23,7 +25,7 @@ footer {
 }
 
 .main-container {
-
+    padding: 0px 30px 0px 30px;
     margin-top: 20px;
 }
 
@@ -37,14 +39,38 @@ h2 {
 
 /* Main menu */
 
-.dropdown {
+/*.dropdown {*/
+/**/
+/*    display: inline;*/
+/*}*/
 
-    display: inline;
+/*.dropdown-menu {*/
+/*    text-align: left;*/
+/*}*/
+
+.nav-item {
+    margin: 5px 0px 5px 0px;;
 }
 
-.dropdown-menu {
-    text-align: left;
+.navbar-brand {
+    font-size: 1.5rem;
 }
+
+
+.navbar-expand-md {
+    padding: 0px 80px 0px 80px;
+    justify-content: space-between;
+
+}
+
+.mr-nav {
+    float: right;
+}
+
+.nav-item {
+    margin-left: 10px;
+}
+
 
 .form-control {
     border-color: #5fad00;
@@ -53,6 +79,11 @@ h2 {
 .form-control:focus {
     border-color: #5fad00;
     box-shadow: 0 0 0 0.2rem rgb(95, 173, 0);
+}
+
+.title {
+    text-align: center;
+    font-size: 28px;
 }
 
 a {
@@ -96,9 +127,9 @@ a:hover {
 }
 
 .post {
-    margin-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 0px 20px 0px 30px;
+    margin: 0px 20px 20px 20px;;
+
 }
 
 .tag {
@@ -107,10 +138,32 @@ a:hover {
 
 /* With media screen */
 
-@media screen and (min-width: 960px) {
-    .form-control {
-        width: auto;
+@media screen and (max-width: 768px) {
+    /*.main-nav {*/
+    /*    display: none;*/
+    /*}*/
+    .main-container {
+        padding: 0px;
     }
+
+    .navbar-expand-md {
+        padding: 0px 15px 0px 15px;
+    }
+
+    .post {
+        margin: 0px;
+    }
+
+    .mr-nav {
+        float: left;
+    }
+
 }
 
+@media (min-width: 768px) {
+    .navbar-expand-md .navbar-collapse {
+        flex-grow: unset;
+    }
 
+
+}

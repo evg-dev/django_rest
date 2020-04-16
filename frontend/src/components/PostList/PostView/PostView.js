@@ -37,12 +37,14 @@ class PostView extends Component {
             <div className="content-list">
                 {/*{this.state.posts.map((post) => (*/}
                 <div className="post" id={id}>
-                    <Link //maintainScrollPosition={false} //console alarm
-                        to={{
-                            pathname: `/${slug}`,
-                        }}>
-                        <h2>{title}</h2>
-                    </Link>
+                    <div className="title">
+                        <Link className="title"//maintainScrollPosition={false} //console alarm
+                              to={{
+                                  pathname: `/${slug}`,
+                              }}>
+                            {title}
+                        </Link>
+                    </div>
                     <div className="post_info">
                             <span className="cat_name">Категория:
                                 <Link to={{pathname: `category/${this.state.category.slug}`}}>

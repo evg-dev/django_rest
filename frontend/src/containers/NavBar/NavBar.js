@@ -50,22 +50,6 @@ class NavBar extends Component {
                     </Collapse>
                 </Navbar>
             </div>
-
-
-
-            // <div ref={this.dropdown}>
-            //     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            //         <DropdownToggle tag="button" type="button" className="form-control" caret>
-            //             Menu
-            //         </DropdownToggle>
-            //         <DropdownMenu className="dropdown-menu">
-            //             <DropdownItem><NavLink to='/'>Home</NavLink></DropdownItem>
-            //             <DropdownItem><NavLink to='/category/'>Categories</NavLink></DropdownItem>
-            //             <DropdownItem><NavLink to='/tag/'>Tags</NavLink></DropdownItem>
-            //             <DropdownItem><NavLink to='/about/'>About</NavLink></DropdownItem>
-            //         </DropdownMenu>
-            //     </Dropdown>
-            // </div>
         );
     }
 }

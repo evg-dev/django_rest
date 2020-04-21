@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import {ListGroup, ListGroupItem} from "reactstrap";
+import {Link} from "react-router-dom";
 
 class TagsList extends Component {
 
@@ -21,9 +23,15 @@ class TagsList extends Component {
         return (
             <ul className="content-list">
                 {this.state.tags.map((tag) => (
-                    <div className="tag-list" key={tag.id}>
-                        <a href={tag.slug}>#{tag.name}</a>
-                    </div>
+                    <ListGroup>
+                        <ListGroupItem>
+                            <div className="tag-list" key={tag.id}>
+                                <Link to={{pathname: `/tag/${tag.slug}/`}}>
+                                    #{tag.name}
+                                </Link>
+                            </div>
+                        </ListGroupItem>
+                    </ListGroup>
                 ))}
             </ul>
         );

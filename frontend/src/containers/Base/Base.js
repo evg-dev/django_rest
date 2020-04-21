@@ -19,13 +19,13 @@ class Base extends Component {
                     <NavBar/>
                     <div className="main-container">
                         <Switch>
-                            <Route exact path="/tag/:tag__slug" component={Tag}/>
-                            <Route path="/tag/" component={Tags}/>
-                            <Route path="/about/" component={About}/>
-                            <Route exact path="/category/:category__slug" component={Category}/>
-                            <Route path="/category/" component={Categories}/>
                             <Route exact path="/" component={Posts}/>
-                            <Route exact path="/:post__slug" component={Post}/>
+                            <Route exact path="/about/" component={About}/>
+                            <Route path="/tag/" component={Tags}/>
+                            <Route path="/category/" component={Categories}/>
+                            {/*<Route exact path="/category/:category__slug" component={Category}/>*/}
+                            {/*<Route path="/tag/:tag__slug/" component={Tag}/>*/}
+                            <Route path="/:post__slug/" component={Post}/>
                         </Switch>
                     </div>
                 </div>

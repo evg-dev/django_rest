@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Link, Route, useParams} from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import post from "../../../containers/Posts/Post/Post";
 
 class PostView extends Component {
 
@@ -40,14 +39,14 @@ class PostView extends Component {
                     <div className="title">
                         <Link className="title"//maintainScrollPosition={false} //console alarm
                               to={{
-                                  pathname: `/${slug}`,
+                                  pathname: `/${slug}/`,
                               }}>
                             {title}
                         </Link>
                     </div>
                     <div className="post_info">
                             <span className="cat_name">Категория:
-                                <Link to={{pathname: `category/${this.state.category.slug}`}}>
+                                <Link to={{pathname: `/category/${this.state.category.slug}/`}}>
                                     <span> {this.state.category.name}</span>
                                 </Link>
                             </span>
@@ -56,7 +55,7 @@ class PostView extends Component {
                             <ul className="post_tags">
                                 {this.state.tag.map((t) => (
                                     <li className="tag" key={t.id}>
-                                        <Link to={{pathname: `tag/${t.slug}`}}>
+                                        <Link to={{pathname: `/tag/${t.slug}/`}}>
                                             #{t.name}
                                         </Link>
                                     </li>

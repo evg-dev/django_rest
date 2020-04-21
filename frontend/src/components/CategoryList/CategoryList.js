@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import {ListGroup, ListGroupItem} from 'reactstrap';
+
 
 class CategoryList extends Component {
 
@@ -22,12 +24,16 @@ class CategoryList extends Component {
         return (
             <ul className="content-list">
                 {this.state.categories.map((category) => (
-                    <div className="tag-list" key={category.id}>
-                        <Link to={{pathname: `/category/${category.slug}`}}>
-                            {category.name}
-                        </Link>
+                    <ListGroup>
+                        <ListGroupItem>
+                            <div className="tag-list" key={category.id}>
+                                <Link to={{pathname: `/category/${category.slug}/`}}>
+                                    {category.name}
+                                </Link>
+                            </div>
+                        </ListGroupItem>
                         {/*<a href={category.slug}>{category.name}</a>*/}
-                    </div>
+                    </ListGroup>
                 ))}
             </ul>
         );

@@ -6,10 +6,8 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavbarTextDropdown, DropdownToggle, DropdownMenu, DropdownItem
 } from 'reactstrap';
 import {BrowserRouter, Route, NavLink, Switch, withRouter} from "react-router-dom";
-import About from "../About/About";
 
 
 class NavBar extends Component {

@@ -137,6 +137,12 @@ a:hover {
     margin-right: 0.5em;
 }
 
+
+.list-group-item {
+    margin-bottom: -1px;
+}
+
+
 /* With media screen */
 
 @media screen and (max-width: 768px) {

@@ -24,16 +24,18 @@ class CategoryList extends Component {
         return (
             <ul className="content-list">
                 {this.state.categories.map((category) => (
-                    <ListGroup>
-                        <ListGroupItem>
-                            <div className="tag-list" key={category.id}>
+                    <div className="tag-list" key={category.id}>
+                        <ListGroup>
+                            <ListGroupItem>
+
                                 <Link to={{pathname: `/category/${category.slug}/`}}>
                                     {category.name}
                                 </Link>
-                            </div>
-                        </ListGroupItem>
-                        {/*<a href={category.slug}>{category.name}</a>*/}
-                    </ListGroup>
+
+                            </ListGroupItem>
+                            {/*<a href={category.slug}>{category.name}</a>*/}
+                        </ListGroup>
+                    </div>
                 ))}
             </ul>
         );

@@ -23,15 +23,17 @@ class TagsList extends Component {
         return (
             <ul className="content-list">
                 {this.state.tags.map((tag) => (
-                    <ListGroup>
-                        <ListGroupItem>
-                            <div className="tag-list" key={tag.id}>
+                    <div className="tag-list" key={tag.id}>
+                        <ListGroup>
+                            <ListGroupItem>
+
                                 <Link to={{pathname: `/tag/${tag.slug}/`}}>
                                     #{tag.name}
                                 </Link>
-                            </div>
-                        </ListGroupItem>
-                    </ListGroup>
+
+                            </ListGroupItem>
+                        </ListGroup>
+                    </div>
                 ))}
             </ul>
         );

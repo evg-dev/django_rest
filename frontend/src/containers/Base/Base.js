@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import NavBar from "./../../containers/NavBar/NavBar";
 import Footer from "./../../containers/Footer/Footer";
 import Posts from "../Posts/Posts";
@@ -21,10 +21,8 @@ class Base extends Component {
                         <Switch>
                             <Route exact path="/" component={Posts}/>
                             <Route exact path="/about/" component={About}/>
-                            <Route path="/tag/" component={Tags}/>
-                            <Route path="/category/" component={Categories}/>
-                            {/*<Route exact path="/category/:category__slug" component={Category}/>*/}
-                            {/*<Route path="/tag/:tag__slug/" component={Tag}/>*/}
+                            <Route path="/tag/" component={withRouter(Tags)}/>
+                            <Route path="/category/" component={withRouter(Categories)}/>
                             <Route path="/:post__slug/" component={Post}/>
                         </Switch>
                     </div>

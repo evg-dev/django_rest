@@ -7,9 +7,7 @@ class App extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <Route path="/" component={Base}/>
-            </BrowserRouter>
+            <Route path="/" component={Base}/>
         );
     }
 }

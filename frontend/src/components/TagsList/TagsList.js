@@ -26,11 +26,9 @@ class TagsList extends Component {
                     <div className="tag-list" key={tag.id}>
                         <ListGroup>
                             <ListGroupItem>
-
                                 <Link to={{pathname: `/tag/${tag.slug}/`}}>
                                     #{tag.name}
                                 </Link>
-
                             </ListGroupItem>
                         </ListGroup>
                     </div>

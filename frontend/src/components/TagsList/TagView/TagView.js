@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link, useParams, withRouter} from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
 class TagView extends Component {
@@ -19,6 +19,7 @@ class TagView extends Component {
     }
 
     render() {
+        this.props.history;
         return (
             <div className="content-list">
                 {this.state.posts.map((post) => (
@@ -58,4 +59,5 @@ class TagView extends Component {
     }
 }
 
-export default TagView;
+// const TagView = withRouter(RouteTagView);
+export default withRouter(TagView);

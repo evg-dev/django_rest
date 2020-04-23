@@ -12,7 +12,6 @@ class Categories extends Component {
 
     render() {
         return (
-            // <CategoryList/>
             <div>
                 <Switch>
                     <Route exact path="/category/" component={CategoryList}/>

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {ListGroup, ListGroupItem} from "reactstrap";
 import {Link} from "react-router-dom";
 
-class TagsList extends Component {
+class TagsListView extends Component {
 
     state = {
         tags: []
@@ -39,4 +39,4 @@ class TagsList extends Component {
 }
 
 
-export default TagsList
+export default TagsListView

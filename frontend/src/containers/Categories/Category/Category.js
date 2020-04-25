@@ -1,6 +1,6 @@
 import React from "react";
 import {useParams} from "react-router-dom";
-import CategoryView from "../../../components/CategoryList/CategoryView/CategoryView";
+import CategoryView from "../../../components/CategoryListView/CategoryView/CategoryView";
 
 function Category() {
     let {category__slug} = useParams();

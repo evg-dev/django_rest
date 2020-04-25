@@ -134,6 +134,8 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ),
     'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
+    # 'DEFAULT_PAGINATION_CLASS': 'api.core.pagination.CustomPageNumber',
+    # 'PAGE_SIZE': 1
 }
 
 # Developing settings

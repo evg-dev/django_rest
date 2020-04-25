@@ -5,7 +5,6 @@ import ReactMarkdown from "react-markdown";
 class PostView extends Component {
 
     state = {
-
         id: "",
         title: "",
         tease: "",

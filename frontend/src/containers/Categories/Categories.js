@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import CategoryList from "../../components/CategoryList/CategoryList";
+import CategoryListView from "../../components/CategoryListView/CategoryListView";
 import {Route, Switch} from "react-router-dom";
 import Posts from "../Posts/Posts";
 import Tags from "../Tags/Tags";
@@ -14,7 +14,7 @@ class Categories extends Component {
         return (
             <div>
                 <Switch>
-                    <Route exact path="/category/" component={CategoryList}/>
+                    <Route exact path="/category/" component={CategoryListView}/>
                     <Route path="/category/:category__slug/" component={Category}/>
                 </Switch>
             </div>

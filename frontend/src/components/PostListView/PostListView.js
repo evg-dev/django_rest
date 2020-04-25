@@ -3,16 +3,22 @@ import {Link} from "react-router-dom";
 import Tags from "../../containers/Tags/Tags";
 import ReactMarkdown from "react-markdown";
 
-class PostList extends Component {
+class PostListView extends Component {
 
     state = {
-        posts: []
+        count: "",
+        next: "",
+        previous: "",
+        results: []
     };
 
     async loadPosts() {
-        this.setState({
-            posts: await fetch("/api/v0/post/").then(response => response.json())
-        });
+        fetch("/api/v0/post/")
+            .then(response => response.json())
+            .then(data => {
+                this.setState(data)
+            });
+        console.log(this.state.results);
     }
 
     componentDidMount() {
@@ -20,9 +26,10 @@ class PostList extends Component {
     }
 
     render() {
+        const {count, next, previous} = this.state;
         return (
             <div className="content-list">
-                {this.state.posts.map((post) => (
+                {this.state.results.map((post) => (
                     <div className="post" id={post.id} key={post.id}>
                         <div className="title">
                             <Link //maintainScrollPosition={false} //console alarm
@@ -59,4 +66,4 @@ class PostList extends Component {
     }
 }
 
-export default PostList;
+export default PostListView;

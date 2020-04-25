@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import PostList from "../../components/PostList/PostList";
+import PostListView from "../../components/PostListView/PostListView";
 
 
 class Posts extends Component {
     render() {
         return (
-            <PostList/>
+            <PostListView/>
         );
     }
 }

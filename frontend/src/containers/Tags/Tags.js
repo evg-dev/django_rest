@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import TagsList from "../../components/TagsList/TagsList";
+import TagsListView from "../../components/TagsListView/TagsListView";
 import {Route, Switch} from "react-router-dom";
 import Tag from "../Tags/Tag/Tag";
 
@@ -9,7 +9,7 @@ class Tags extends Component {
         return (
             <div>
                 <Switch>
-                    <Route exact path="/tag/" component={TagsList}/>
+                    <Route exact path="/tag/" component={TagsListView}/>
                     <Route path="/tag/:tag__slug/" component={Tag}/>
                 </Switch>
             </div>

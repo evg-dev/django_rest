@@ -1,13 +1,13 @@
 import React, {Component} from "react";
 import PostListView from "../../components/PostListView/PostListView";
+import {useParams} from "react-router-dom";
+import PostView from "../../components/PostListView/PostView/PostView";
 
-
-class Posts extends Component {
-    render() {
-        return (
-            <PostListView/>
-        );
-    }
+function Posts() {
+    let {page} = useParams();
+    return (
+        <PostListView page={page}/>
+    );
 }
 
 export default Posts;

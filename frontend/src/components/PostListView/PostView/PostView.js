@@ -24,9 +24,7 @@ class PostView extends Component {
     }
 
     componentDidMount() {
-
         this.loadPost();
-
     }
 
     render() {

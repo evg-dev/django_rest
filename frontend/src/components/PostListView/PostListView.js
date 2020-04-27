@@ -2,6 +2,10 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import Tags from "../../containers/Tags/Tags";
 import ReactMarkdown from "react-markdown";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
+import * as ReactDOM from "react-dom";
+import {findDOMNode} from "react-dom";
 
 class PostListView extends Component {
 
@@ -9,24 +13,69 @@ class PostListView extends Component {
         count: "",
         next: "",
         previous: "",
-        results: []
+        results: [],
+        page: this.props.page
     };
 
     async loadPosts() {
-        fetch("/api/v0/post/")
+
+        let url;
+        if (this.props.page) {
+            url = `/api/v0/post/?page=${this.props.page}`;
+        } else {
+            url = "/api/v0/post/";
+        }
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 this.setState(data)
             });
-        console.log(this.state.results);
+    }
+
+    Previous() {
+        if (this.state.previous) {
+            return (
+                <Link to={{pathname: `/posts/${this.state.previous}/`}}>
+                    <Button>
+                        Back
+                    </Button>
+                </Link>
+            );
+        } else {
+            return (<div></div>);
+        }
+    }
+
+    Next() {
+        if (this.state.next) {
+            return (
+                <Link to={{pathname: `/posts/${this.state.next}/`}}>
+                    <Button>
+                        Next
+                    </Button>
+                </Link>
+            );
+        } else {
+            return (<div></div>);
+        }
     }
 
     componentDidMount() {
         this.loadPosts();
     }
 
+    componentDidUpdate(prevState) {
+        if (prevState.page !== this.props.page) {
+            this.setState({page: this.props.page});
+            this.loadPosts();
+            // Remove focus from button
+            document.querySelectorAll('button').forEach(function (node) {
+                node.blur();
+            });
+        }
+    }
+
     render() {
-        const {count, next, previous} = this.state;
         return (
             <div className="content-list">
                 {this.state.results.map((post) => (
@@ -61,6 +110,10 @@ class PostListView extends Component {
                         <ReactMarkdown className="tease" source={post.tease} escapeHtml={false}/>
                     </div>
                 ))}
+                <div className="pagination">
+                    {this.Previous()}
+                    {this.Next()}
+                </div>
             </div>
         );
     }

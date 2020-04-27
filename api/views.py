@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from django.core.paginator import Paginator
 from django.shortcuts import render
 
@@ -5,6 +7,8 @@ from django.shortcuts import render
 from rest_framework import viewsets, generics
 from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
+from rest_framework.utils.urls import replace_query_param, remove_query_param
 
 from .serializers import TagSerializer, PostSerializer, CategorySerializer
 from .models import Tag, Post, Category
@@ -12,6 +16,23 @@ from .models import Tag, Post, Category
 
 class ApiPageNumber(PageNumberPagination):
     page_size = 1
+
+    # Custom methods
+    def get_next_link(self):
+        if not self.page.has_next():
+            return None
+        # url = self.request.get_full_path()
+        page_number = self.page.next_page_number()
+        return page_number
+
+    def get_previous_link(self):
+        if not self.page.has_previous():
+            return None
+        url = self.request.get_full_path()
+        page_number = self.page.previous_page_number()
+        # if page_number == 1:
+        #     return "/"
+        return page_number
 
 
 class TagViewSet(viewsets.ModelViewSet):
@@ -25,6 +46,13 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
 
 class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    pagination_class = ApiPageNumber
+    serializer_class = PostSerializer
+    lookup_field = 'slug'
+
+
+class PostViewSetPaginated(generics.ListAPIView):
     queryset = Post.objects.all()
     pagination_class = ApiPageNumber
     serializer_class = PostSerializer

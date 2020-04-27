@@ -23,6 +23,7 @@ class Base extends Component {
                             <Route exact path="/about/" component={About}/>
                             <Route path="/tag/" component={withRouter(Tags)}/>
                             <Route path="/category/" component={withRouter(Categories)}/>
+                            <Route path="/posts/:page/" component={Posts}/>
                             <Route path="/:post__slug/" component={Post}/>
                         </Switch>
                     </div>

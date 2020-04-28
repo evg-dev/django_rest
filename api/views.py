@@ -19,10 +19,8 @@ class ApiPageNumber(PageNumberPagination):
     Custom pagination class overriding methods get_next_link() and get_previous_link() which
     return pagination page_number instead url
     """
-
     # TODO: add to settings
-    page_size = 5
-
+    page_size = 1
     def get_next_link(self):
         if not self.page.has_next():
             return None

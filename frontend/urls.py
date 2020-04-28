@@ -9,8 +9,10 @@ urlpatterns = [
     path('category/', MainPageViews.as_view()),
     path('tag/', MainPageViews.as_view()),
     path('', MainPageViews.as_view()),
-    path('posts/<page>/', MainPageViews.as_view()),
+    path('page/<page>/', MainPageViews.as_view()),
     path('category/<category__slug>/', MainPageViews.as_view()),
     path('tag/<tag__slug>/', MainPageViews.as_view()),
+    path('tag/<tag__slug>/page/<page_tag>/', MainPageViews.as_view()),
+    path('category/<category__slug>/page/<page_cat>/', MainPageViews.as_view()),
     path('<slug>/', MainPageViews.as_view()),
 ]

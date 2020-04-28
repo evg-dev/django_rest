@@ -1,11 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import Tags from "../../containers/Tags/Tags";
 import ReactMarkdown from "react-markdown";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
-import * as ReactDOM from "react-dom";
-import {findDOMNode} from "react-dom";
 
 class PostListView extends Component {
 
@@ -35,7 +31,7 @@ class PostListView extends Component {
     Previous() {
         if (this.state.previous) {
             return (
-                <Link to={{pathname: `/posts/${this.state.previous}/`}}>
+                <Link to={{pathname: `/page/${this.state.previous}/`}}>
                     <Button>
                         Back
                     </Button>
@@ -49,7 +45,7 @@ class PostListView extends Component {
     Next() {
         if (this.state.next) {
             return (
-                <Link to={{pathname: `/posts/${this.state.next}/`}}>
+                <Link to={{pathname: `/page/${this.state.next}/`}}>
                     <Button>
                         Next
                     </Button>
@@ -64,6 +60,7 @@ class PostListView extends Component {
         this.loadPosts();
     }
 
+    // For all buttons
     componentDidUpdate(prevState) {
         if (prevState.page !== this.props.page) {
             this.setState({page: this.props.page});

@@ -10,6 +10,7 @@ class Tags extends Component {
             <div>
                 <Switch>
                     <Route exact path="/tag/" component={TagsListView}/>
+                    <Route path="/tag/:tag__slug/page/:page_tag/" component={Tag}/>
                     <Route path="/tag/:tag__slug/" component={Tag}/>
                 </Switch>
             </div>

@@ -1,17 +1,59 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import Button from "react-bootstrap/Button";
 
 class CategoryView extends Component {
+
     state = {
-        posts: []
+        count: "",
+        next: "",
+        previous: "",
+        results: [],
+        page_cat: this.props.page_cat,
+        category__slug: this.props.category__slug
     };
 
     async loadPostsByCategory() {
-        this.setState({
-            posts: await fetch(`/api/v0/category/${this.props.category__slug}/`)
-                .then(response => response.json())
-        });
+        let url;
+        if (this.props.page_cat) {
+            url = `/api/v0/category/${this.props.category__slug}/?page=${this.props.page_cat}`;
+        } else {
+            url = `/api/v0/category/${this.props.category__slug}/`;
+        }
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                this.setState(data)
+            });
+    }
+
+    Previous() {
+        if (this.state.previous) {
+            return (
+                <Link to={{pathname: `/category/${this.props.category__slug}/page/${this.state.previous}/`}}>
+                    <Button>
+                        Back
+                    </Button>
+                </Link>
+            );
+        } else {
+            return (<div></div>);
+        }
+    }
+
+    Next() {
+        if (this.state.next) {
+            return (
+                <Link to={{pathname: `/category/${this.props.category__slug}/page/${this.state.next}/`}}>
+                    <Button>
+                        Next
+                    </Button>
+                </Link>
+            );
+        } else {
+            return (<div></div>);
+        }
     }
 
     componentDidMount() {
@@ -21,7 +63,7 @@ class CategoryView extends Component {
     render() {
         return (
             <div className="content-list">
-                {this.state.posts.map((post) => (
+                {this.state.results.map((post) => (
                     <div className="post" id={post.id} key={post.id}>
                         <div className="title">
                             <Link //maintainScrollPosition={false} //console alarm
@@ -53,6 +95,10 @@ class CategoryView extends Component {
                         <ReactMarkdown className="tease" source={post.tease} escapeHtml={false}/>
                     </div>
                 ))}
+                <div className="pagination">
+                    {this.Previous()}
+                    {this.Next()}
+                </div>
             </div>
         );
     }

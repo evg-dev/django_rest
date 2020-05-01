@@ -15,7 +15,7 @@ from .models import UserProfile, Category, Tag, Comment, Post
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'name', 'slug', 'parent_id']
+        fields = ['id', 'name', 'slug', 'parent_id_id']
 
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):

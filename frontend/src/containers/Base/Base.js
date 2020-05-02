@@ -7,6 +7,7 @@ import Tags from "../Tags/Tags";
 import Categories from "../Categories/Categories";
 import About from "../About/About";
 import Post from "../Posts/Post/Post";
+import NoMatchPage from "../NoMatchPage/NoMatchPage";
 
 
 class Base extends Component {
@@ -23,6 +24,7 @@ class Base extends Component {
                             <Route path="/category/" component={withRouter(Categories)}/>
                             <Route path="/page/:page/" component={Posts}/>
                             <Route path="/:post__slug/" component={Post}/>
+                            {/*<Route component={NoMatchPage}/>*/}
                         </Switch>
                     </div>
                 </div>

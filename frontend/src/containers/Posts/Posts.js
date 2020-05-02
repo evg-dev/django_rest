@@ -1,12 +1,20 @@
 import React from "react";
 import PostListView from "../../components/PostListView/PostListView";
-import {useParams} from "react-router-dom";
+import {Route, useParams} from "react-router-dom";
 import PostView from "../../components/PostListView/PostView/PostView";
+import NoMatchPage from "../NoMatchPage/NoMatchPage";
 
 function Posts() {
     let {page} = useParams();
     return (
-        <PostListView page={page}/>
+        <div>
+            <PostListView page={page}/>
+            {/*<Route path="*">*/}
+            {/*    <NoMatchPage />*/}
+            {/*</Route>*/}
+        </div>
+
+
     );
 }
 

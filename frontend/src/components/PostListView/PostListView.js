@@ -26,6 +26,7 @@ class PostListView extends Component {
             .then(data => {
                 this.setState(data)
             });
+        console.log(this.props);
     }
 
     Previous() {

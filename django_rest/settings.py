@@ -48,6 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Custom middleware for API redirect 404
+    'api.views.Redirect404Middleware',
 ]
 
 ROOT_URLCONF = 'django_rest.urls'
@@ -82,10 +84,10 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '5432',
     },
-    'sqlite': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
+    # 'sqlite': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
 
 }
 

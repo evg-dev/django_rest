@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import TagsListView from "../../components/TagsListView/TagsListView";
 import {Route, Switch} from "react-router-dom";
 import Tag from "../Tags/Tag/Tag";
+import NoMatchPage from "../NoMatchPage/NoMatchPage";
 
 class Tags extends Component {
 

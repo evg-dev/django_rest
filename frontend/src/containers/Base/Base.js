@@ -18,13 +18,13 @@ class Base extends Component {
                     <NavBar/>
                     <div className="main-container">
                         <Switch>
+                            <Route exact path="/404/" component={NoMatchPage}/>
                             <Route exact path="/" component={Posts}/>
                             <Route exact path="/about/" component={About}/>
                             <Route path="/tag/" component={withRouter(Tags)}/>
                             <Route path="/category/" component={withRouter(Categories)}/>
                             <Route path="/page/:page/" component={Posts}/>
                             <Route path="/:post__slug/" component={Post}/>
-                            {/*<Route component={NoMatchPage}/>*/}
                         </Switch>
                     </div>
                 </div>

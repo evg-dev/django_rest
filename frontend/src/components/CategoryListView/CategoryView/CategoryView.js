@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import Button from "react-bootstrap/Button";
+import NoMatchPage from "../../../containers/NoMatchPage/NoMatchPage";
 
 class CategoryView extends Component {
 
@@ -11,7 +12,8 @@ class CategoryView extends Component {
         previous: "",
         results: [],
         page_cat: this.props.page_cat,
-        category__slug: this.props.category__slug
+        category__slug: this.props.category__slug,
+        readyToRedirect: false
     };
 
     async loadPostsByCategory() {
@@ -25,8 +27,14 @@ class CategoryView extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState(data)
+            })
+            // catch error and redirect to 404 for bad fetch by invalid URL
+            .catch(error => {
+                // console.log(error);
+                this.setState({
+                    readyToRedirect: true
+                });
             });
-        // console.log(this.state);
     }
 
     Previous() {
@@ -62,8 +70,11 @@ class CategoryView extends Component {
     }
 
     render() {
-        console.log(this.state.results);
-        if (this.state.results && this.state.results.length > 0) {
+        if (this.state.readyToRedirect) {
+            return (
+                <Redirect to="/404/"/>
+            );
+        } else {
             return (
                 <div className="content-list">
                     {this.state.results.map((post) => (
@@ -102,12 +113,6 @@ class CategoryView extends Component {
                         {this.Previous()}
                         {this.Next()}
                     </div>
-                </div>
-            );
-        } else {
-            return (
-                <div className="content-list">
-                    404
                 </div>
             );
         }

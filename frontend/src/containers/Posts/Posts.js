@@ -9,9 +9,6 @@ function Posts() {
     return (
         <div>
             <PostListView page={page}/>
-            {/*<Route path="*">*/}
-            {/*    <NoMatchPage />*/}
-            {/*</Route>*/}
         </div>
 
 

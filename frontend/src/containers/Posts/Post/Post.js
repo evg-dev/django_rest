@@ -9,10 +9,6 @@ function Post() {
     return (
         <div>
             <PostView post__slug={post__slug}/>
-            {/*<Route component={NoMatchPage}/>*/}
-            {/*<Route path="*">*/}
-            {/*    <NoMatchPage />*/}
-            {/*</Route>*/}
         </div>
     );
 }

@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import Button from "react-bootstrap/Button";
+import NoMatchPage from "../../containers/NoMatchPage/NoMatchPage";
 
 class PostListView extends Component {
 
@@ -10,7 +11,8 @@ class PostListView extends Component {
         next: "",
         previous: "",
         results: [],
-        page: this.props.page
+        page: this.props.page,
+        readyToRedirect: false
     };
 
     async loadPosts() {
@@ -25,8 +27,13 @@ class PostListView extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState(data)
+            })
+            .catch(error => {
+                // console.log(error);
+                this.setState({
+                    readyToRedirect: true
+                });
             });
-        console.log(this.props);
     }
 
     Previous() {
@@ -74,46 +81,52 @@ class PostListView extends Component {
     }
 
     render() {
-        return (
-            <div className="content-list">
-                {this.state.results.map((post) => (
-                    <div className="post" id={post.id} key={post.id}>
-                        <div className="title">
-                            <Link //maintainScrollPosition={false} //console alarm
-                                to={{
-                                    pathname: `/${post.slug}/`,
-                                }}>
-                                {post.title}
-                            </Link>
-                        </div>
-                        <div className="post_info">
-                            <span className="cat_name">Категория:
-                                <Link to={{pathname: `/category/${post.category.slug}/`}}>
-                                    <span> {post.category.name}</span>
+        if (this.state.readyToRedirect) {
+            return (
+                <Redirect to="/404/"/>
+            );
+        } else {
+            return (
+                <div className="content-list">
+                    {this.state.results.map((post) => (
+                        <div className="post" id={post.id} key={post.id}>
+                            <div className="title">
+                                <Link //maintainScrollPosition={false} //console alarm
+                                    to={{
+                                        pathname: `/${post.slug}/`,
+                                    }}>
+                                    {post.title}
                                 </Link>
-                            </span>
-                            <span>{post.created}</span>
-                            <div className="tags_container">
-                                <ul className="post_tags">
-                                    {post.tag.map((t) => (
-                                        <li className="tag" key={t.id}>
-                                            <Link to={{pathname: `/tag/${t.slug}/`}}>
-                                                #{t.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
                             </div>
+                            <div className="post_info">
+                                <span className="cat_name">Категория:
+                                    <Link to={{pathname: `/category/${post.category.slug}/`}}>
+                                        <span> {post.category.name}</span>
+                                    </Link>
+                                </span>
+                                <span>{post.created}</span>
+                                <div className="tags_container">
+                                    <ul className="post_tags">
+                                        {post.tag.map((t) => (
+                                            <li className="tag" key={t.id}>
+                                                <Link to={{pathname: `/tag/${t.slug}/`}}>
+                                                    #{t.name}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                            <ReactMarkdown className="tease" source={post.tease} escapeHtml={false}/>
                         </div>
-                        <ReactMarkdown className="tease" source={post.tease} escapeHtml={false}/>
+                    ))}
+                    <div className="pagination">
+                        {this.Previous()}
+                        {this.Next()}
                     </div>
-                ))}
-                <div className="pagination">
-                    {this.Previous()}
-                    {this.Next()}
                 </div>
-            </div>
-        );
+            );
+        }
     }
 }
 

@@ -15,4 +15,5 @@ urlpatterns = [
     path('tag/<tag__slug>/page/<page_tag>/', MainPageViews.as_view()),
     path('category/<category__slug>/page/<page_cat>/', MainPageViews.as_view()),
     path('<slug>/', MainPageViews.as_view()),
+    path('404/', MainPageViews.as_view()),
 ]
